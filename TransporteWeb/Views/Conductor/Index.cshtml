@@ -1,0 +1,49 @@
+﻿@using TransporteWeb.Models;
+@{
+    Layout = null;
+    List<Conductor> conductor = ViewBag.resultadoParaLaVista;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2> Lista de Conductores</h2>
+
+        <a href="/Conductor/FormularioNuevo"> Ingresar nuevo Conductor </a>
+        <br />
+        <br />
+
+        <table border="1">
+
+            <tr>
+                <td>IdConductor</td>
+                <td>Nombre</td>
+                <td>Cedula</td>
+                <td>Telefono</td>
+                <td colspan="2">Opciones</td>
+            </tr>
+
+
+            @foreach (Conductor xxx in conductor)
+            {
+                <tr>
+                    <td>@xxx.IdConductor</td>
+                    <td>@xxx.Nombre</td>
+                    <td>@xxx.Cedula</td>
+                    <td>@xxx.Telefono</td>
+                    <td><a href="/Conductor/FormularioUpdate?id=@xxx.IdConductor">Update</a></td>
+                    <td><a href="/Conductor/Borrar?id=@xxx.IdConductor">Delete</a></td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>
+
